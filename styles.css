@@ -255,7 +255,8 @@ p + p { margin-top: 0.9em; }
   overflow: hidden;
   background: var(--surface);
 }
-.hero-portrait img {
+.hero-portrait img,
+.hero-portrait video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -406,7 +407,7 @@ p + p { margin-top: 0.9em; }
 .services-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 760px;
+  min-height: 860px;
 }
 
 .services-intro {
@@ -436,7 +437,7 @@ p + p { margin-top: 0.9em; }
 
 .services-rows {
   display: grid;
-  grid-template-rows: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
   background: var(--ink);
   color: var(--bg);
 }
@@ -446,6 +447,15 @@ p + p { margin-top: 0.9em; }
   grid-template-columns: 5fr 4fr 3fr;
   gap: 24px;
   align-items: start;
+}
+
+/* Keep the dense service board on the same left edge as its section copy. */
+@media (min-width: 981px) {
+  .services-intro { padding-inline: 32px; }
+  .service-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 .service-row:nth-child(odd) { background: var(--ink); }
 .service-row:nth-child(even) { background: var(--field-dark-2); }
@@ -1110,6 +1120,8 @@ p + p { margin-top: 0.9em; }
     transform: none;
     clip-path: none;
   }
+  video { display: none; }
+  .hero-portrait { background: url("assets/google-timelapse-kuala-lumpur-malaysia-poster.jpg") center / cover; }
 }
 
 /* =========================================================

@@ -88,5 +88,29 @@
    "Not a formal licence: the archive that published it states it knows of no copyright restrictions."
   ],
   "saved": "2026-10-27T07:41:28.329Z"
+ },
+ {
+  "file": "assets/google-timelapse-kuala-lumpur-malaysia.webm",
+  "media": "video",
+  "poster": "assets/google-timelapse-kuala-lumpur-malaysia-poster.jpg",
+  "ref": "commons:122663184",
+  "title": "Google Timelapse- Kuala Lumpur, Malaysia",
+  "creator": "Google Earth",
+  "creatorUrl": null,
+  "date": "2016-11-29",
+  "license": "CC BY 3.0",
+  "licenseCode": "by",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/wiki/File:Google_Timelapse-_Kuala_Lumpur,_Malaysia.webm",
+  "via": "Wikimedia Commons",
+  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6e/Google_Timelapse-_Kuala_Lumpur%2C_Malaysia.webm/Google_Timelapse-_Kuala_Lumpur%2C_Malaysia.webm.480p.vp9.webm",
+  "width": 854,
+  "height": 480,
+  "duration": 12.3,
+  "bytes": 1120119,
+  "credit": "\"Google Timelapse- Kuala Lumpur, Malaysia\" by Google Earth, CC BY 3.0, via Wikimedia Commons",
+  "notes": [],
+  "saved": "2026-10-27T11:55:52.826Z"
  }
 ]
