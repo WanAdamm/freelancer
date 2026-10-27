@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forma — concept study</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; }
+  body { font-family: "Segoe UI", Arial, sans-serif; background: #f1eee7; color: #171611; overflow: hidden; }
+  .page { height: 100vh; display: flex; flex-direction: column; padding: 30px 34px 26px; }
+  header { display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-family: Georgia, "Times New Roman", serif; font-size: 28px; letter-spacing: -.04em; }
+  nav { display: flex; gap: 34px; font-size: 12px; color: #5c594f; }
+  .search { border: 1px solid #c9c4b8; padding: 10px 14px; width: 240px; font-size: 12px; color: #6a675d; display: flex; justify-content: space-between; }
+  .hero { display: grid; grid-template-columns: 1.02fr .98fr; gap: 46px; padding-top: 66px; flex: 1; min-height: 0; }
+  .copy { display: flex; flex-direction: column; }
+  .kicker { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #6e6a5e; margin-bottom: 24px; }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 96px; line-height: .89; letter-spacing: -.065em; margin: 0; max-width: 560px; }
+  .lede { font-size: 16px; line-height: 1.55; color: #514e45; max-width: 380px; margin: 34px 0 0; }
+  .actions { display: flex; align-items: center; gap: 22px; margin-top: auto; padding-top: 32px; }
+  .button { background: #1f4b3a; color: #f7f4ec; padding: 15px 22px; font-size: 12px; text-decoration: none; }
+  .textlink { color: #171611; font-size: 12px; text-decoration: none; border-bottom: 1px solid #171611; padding-bottom: 3px; }
+  .image { min-height: 0; position: relative; overflow: hidden; }
+  .image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); display: block; }
+  .caption { position: absolute; left: 0; bottom: 0; background: #f1eee7; padding: 12px 16px; font-size: 10px; color: #5c594f; max-width: 280px; line-height: 1.4; }
+  .meta { display: flex; gap: 28px; font-size: 11px; color: #5c594f; padding-top: 18px; }
+  .meta b { display: block; color: #171611; font-size: 22px; font-family: Georgia, serif; font-weight: 400; margin-bottom: 3px; }
+  footer { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 28px; border-top: 1px solid #c9c4b8; margin-top: 22px; font-size: 11px; color: #5c594f; }
+  .featured { display: flex; gap: 12px; align-items: center; }
+  .swatch { width: 24px; height: 24px; background: #1f4b3a; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Forma</div>
+      <nav><span>Collection</span><span>Stories</span><span>Visit</span><span>About</span></nav>
+      <div class="search">Search 12,480 objects <span>⌕</span></div>
+    </header>
+    <main class="hero">
+      <section class="copy">
+        <div class="kicker">The Ridai collection / Tokyo</div>
+        <h1>A museum, opened.</h1>
+        <p class="lede">Twelve thousand objects from the history of computation, now searchable, storyable and free to revisit. Built for the curious, not just the credentialed.</p>
+        <div class="actions">
+          <a class="button" href="#">Explore the collection</a>
+          <a class="textlink" href="#">Read the first story</a>
+        </div>
+        <div class="meta">
+          <div><b>12,480</b>objects</div>
+          <div><b>3,200</b>on view</div>
+          <div><b>84</b>stories</div>
+        </div>
+      </section>
+      <section class="image">
+        <img src="../assets/interior-view-with-early-computers-ridai-museum.jpg" alt="Historic computers in a museum gallery">
+        <div class="caption">Gallery 2: the first general-purpose computers, 1950–1975. From the museum archive.</div>
+      </section>
+    </main>
+    <footer>
+      <div class="featured"><span class="swatch"></span><span>Open access / 1,204 object records include high-resolution scans</span></div>
+      <div>Tokyo, JP / Open daily 10:00–17:00</div>
+    </footer>
+  </div>
+</body>
+</html>

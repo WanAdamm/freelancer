@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relay — concept study</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #0c100f;
+    color: #eef2ed;
+    overflow: hidden;
+  }
+  .app { display: grid; grid-template-columns: 210px 1fr; height: 100vh; }
+  .side { border-right: 1px solid #26302c; padding: 28px 22px; display: flex; flex-direction: column; }
+  .brand { font-size: 22px; font-weight: 800; letter-spacing: -.04em; display: flex; align-items: center; gap: 10px; }
+  .brand i { width: 12px; height: 12px; background: #b8ff5a; border-radius: 50%; display: block; }
+  .side nav { margin-top: 54px; display: grid; gap: 7px; }
+  .side a { color: #8e9a93; text-decoration: none; font-size: 14px; padding: 11px 12px; border-radius: 6px; }
+  .side a.on { background: #1a211e; color: #eef2ed; }
+  .side .foot { margin-top: auto; font-size: 12px; color: #7b8780; line-height: 1.5; }
+  .main { padding: 28px 30px 24px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .search { width: 330px; background: #151b18; border: 1px solid #27312c; border-radius: 7px; padding: 11px 14px; color: #8e9a93; font-size: 13px; }
+  .who { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #aeb8b2; }
+  .who b { width: 30px; height: 30px; border-radius: 50%; background: #b8ff5a; color: #0c100f; display: grid; place-items: center; font-size: 12px; }
+  .head { display: flex; justify-content: space-between; align-items: flex-end; }
+  h1 { font-size: 34px; line-height: 1.05; letter-spacing: -.04em; margin: 0; font-weight: 650; }
+  .head p { margin: 8px 0 0; font-size: 13px; color: #8e9a93; }
+  .pill { background: #b8ff5a; color: #0c100f; border: 0; padding: 12px 18px; border-radius: 6px; font: inherit; font-weight: 700; font-size: 13px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .stat { background: #151b18; border: 1px solid #26302c; border-radius: 8px; padding: 16px 18px; }
+  .stat small { display: block; color: #8e9a93; font-size: 11px; text-transform: uppercase; letter-spacing: .09em; }
+  .stat b { display: block; font-size: 27px; letter-spacing: -.04em; margin-top: 9px; font-weight: 650; }
+  .stat span { font-size: 11px; color: #b8ff5a; }
+  .grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 12px; min-height: 0; flex: 1; }
+  .panel { background: #151b18; border: 1px solid #26302c; border-radius: 8px; padding: 17px 18px; min-height: 0; }
+  .panel h2 { font-size: 13px; letter-spacing: .02em; margin: 0 0 14px; font-weight: 650; }
+  .table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .table th { text-align: left; color: #7b8780; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 500; padding: 0 0 10px; }
+  .table td { padding: 12px 0; border-top: 1px solid #222b26; vertical-align: middle; }
+  .table td:first-child { font-weight: 600; }
+  .status { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; padding: 5px 8px; border-radius: 4px; background: #1d2a23; color: #b8ff5a; }
+  .status.warn { background: #2a2418; color: #ffd479; }
+  .status.grey { background: #1d2220; color: #9da8a2; }
+  .right { display: grid; grid-template-rows: 1.1fr .9fr; gap: 12px; min-height: 0; }
+  .map { position: relative; overflow: hidden; background: #101512; }
+  .map .dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #b8ff5a; box-shadow: 0 0 0 4px #b8ff5a22; }
+  .map .ring { position: absolute; border: 1px solid #2c3a33; border-radius: 50%; }
+  .map .line { position: absolute; height: 1px; background: #37453e; transform-origin: left center; }
+  .map .place { position: absolute; font-size: 9px; color: #7b8780; }
+  .queue { display: grid; gap: 0; font-size: 12px; }
+  .queue div { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-top: 1px solid #222b26; }
+  .queue div:first-child { border-top: 0; padding-top: 0; }
+  .queue b { font-weight: 600; }
+  .queue span { color: #8e9a93; white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <div class="brand"><i></i>Relay</div>
+      <nav>
+        <a class="on" href="#">Control tower</a>
+        <a href="#">Shipments</a>
+        <a href="#">Exceptions</a>
+        <a href="#">Partners</a>
+        <a href="#">Reports</a>
+      </nav>
+      <div class="foot">Rotterdam / 09:42<br>All systems normal</div>
+    </aside>
+    <main class="main">
+      <div class="top">
+        <div class="search">Search shipment, lane or partner</div>
+        <div class="who">Maya Chen, operations <b>MC</b></div>
+      </div>
+      <div class="head">
+        <div>
+          <h1>Good morning, Maya.</h1>
+          <p>12 shipments need attention before 14:00.</p>
+        </div>
+        <button class="pill">New shipment</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><small>Active shipments</small><b>148</b><span>+8 today</span></div>
+        <div class="stat"><small>On-time rate</small><b>96.4%</b><span>+1.2% this week</span></div>
+        <div class="stat"><small>Exceptions</small><b>12</b><span>4 high priority</span></div>
+        <div class="stat"><small>Avg. dwell</small><b>4h 12m</b><span>−38m this week</span></div>
+      </div>
+      <div class="grid">
+        <section class="panel">
+          <h2>Priority shipments</h2>
+          <table class="table">
+            <thead><tr><th>Shipment</th><th>Lane</th><th>ETA</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>RL-2048</td><td>Rotterdam → Oslo</td><td>Today, 16:20</td><td><span class="status warn">Customs hold</span></td></tr>
+              <tr><td>RL-2041</td><td>Hamburg → Manchester</td><td>Today, 18:05</td><td><span class="status">On time</span></td></tr>
+              <tr><td>RL-2037</td><td>Antwerp → Lyon</td><td>Tomorrow, 09:10</td><td><span class="status grey">Awaiting pickup</span></td></tr>
+              <tr><td>RL-2033</td><td>Bilbao → Milan</td><td>Tomorrow, 12:40</td><td><span class="status">On time</span></td></tr>
+              <tr><td>RL-2029</td><td>Gdańsk → Berlin</td><td>Tomorrow, 15:15</td><td><span class="status warn">Delay, 2h</span></td></tr>
+              <tr><td>RL-2024</td><td>Le Havre → Dublin</td><td>Fri, 08:30</td><td><span class="status">On time</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+        <div class="right">
+          <section class="panel map">
+            <h2>Network</h2>
+            <div class="ring" style="width:260px;height:260px;left:70px;top:30px"></div>
+            <div class="ring" style="width:420px;height:420px;left:-10px;top:-50px"></div>
+            <div class="line" style="width:180px;left:115px;top:135px;transform:rotate(-28deg)"></div>
+            <div class="line" style="width:220px;left:170px;top:185px;transform:rotate(18deg)"></div>
+            <div class="line" style="width:150px;left:210px;top:92px;transform:rotate(64deg)"></div>
+            <div class="dot" style="left:105px;top:128px"></div>
+            <div class="dot" style="left:270px;top:72px"></div>
+            <div class="dot" style="left:368px;top:222px"></div>
+            <div class="dot" style="left:192px;top:246px"></div>
+            <div class="dot" style="left:306px;top:164px"></div>
+            <div class="place" style="left:84px;top:148px">Rotterdam</div>
+            <div class="place" style="left:258px;top:52px">Oslo</div>
+            <div class="place" style="left:348px;top:238px">Milan</div>
+            <div class="place" style="left:170px;top:262px">Bilbao</div>
+            <div class="place" style="left:286px;top:180px">Hamburg</div>
+          </section>
+          <section class="panel">
+            <h2>Exception queue</h2>
+            <div class="queue">
+              <div><b>RL-2048 / customs hold</b><span>14:00</span></div>
+              <div><b>RL-2029 / weather delay</b><span>15:30</span></div>
+              <div><b>RL-2018 / missing document</b><span>16:10</span></div>
+              <div><b>RL-1997 / partner no-show</b><span>17:00</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

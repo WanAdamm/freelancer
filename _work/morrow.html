@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morrow — concept study</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; }
+  body { font-family: "Segoe UI", Arial, sans-serif; background: #e9eee9; color: #101512; overflow: hidden; }
+  .stage { height: 100vh; display: grid; grid-template-columns: 1.1fr .9fr; position: relative; }
+  .left { padding: 64px 0 0 56px; position: relative; z-index: 2; }
+  .brand { font-size: 20px; font-weight: 800; letter-spacing: -.04em; display: flex; align-items: center; gap: 9px; }
+  .brand i { width: 13px; height: 13px; border: 2px solid #1f5c43; border-radius: 50%; display: block; }
+  h1 { font-size: 104px; line-height: .86; letter-spacing: -.075em; font-weight: 650; margin: 120px 0 0; max-width: 680px; }
+  .lede { font-size: 16px; line-height: 1.55; color: #4f5b53; max-width: 340px; margin: 28px 0 0; }
+  .button { display: inline-block; background: #1f5c43; color: #f4f7f2; padding: 15px 24px; font-size: 13px; text-decoration: none; margin-top: 30px; }
+  .note { font-size: 11px; color: #68766d; margin-top: 18px; }
+  .right { position: relative; display: flex; align-items: center; justify-content: center; padding-right: 40px; }
+  .word { position: absolute; right: -20px; top: 34px; font-size: 210px; font-weight: 800; letter-spacing: -.08em; color: #dbe4dc; z-index: 0; }
+  .phone { width: 320px; height: 650px; background: #101512; border-radius: 40px; padding: 11px; position: relative; z-index: 2; box-shadow: 0 30px 60px rgba(16,21,18,.18); }
+  .screen { background: #f7f8f3; height: 100%; border-radius: 30px; padding: 24px 22px; overflow: hidden; }
+  .status { display: flex; justify-content: space-between; font-size: 9px; color: #6e7a71; }
+  .hello { font-size: 12px; color: #68766d; margin-top: 28px; }
+  .name { font-size: 23px; letter-spacing: -.04em; font-weight: 650; margin-top: 3px; }
+  .balance { margin-top: 28px; font-size: 11px; color: #68766d; }
+  .amount { font-size: 44px; letter-spacing: -.06em; font-weight: 650; margin-top: 5px; }
+  .change { font-size: 10px; color: #1f5c43; margin-top: 4px; }
+  .chart { height: 100px; margin-top: 18px; position: relative; border-bottom: 1px solid #dfe5df; }
+  .chart svg { width: 100%; height: 100%; display: block; }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid #e4e9e3; }
+  .row:last-child { border-bottom: 0; }
+  .row b { display: block; font-size: 12px; font-weight: 600; }
+  .row small { display: block; color: #7b887f; font-size: 9px; margin-top: 3px; }
+  .row span { font-size: 12px; font-weight: 600; }
+  .row span.plus { color: #1f5c43; }
+  .goal { background: #e7efe8; border-radius: 12px; padding: 13px; margin-top: 14px; }
+  .goal small { font-size: 9px; color: #68766d; }
+  .goal b { display: block; font-size: 13px; margin-top: 4px; }
+  .bar { height: 5px; background: #cbd9cd; margin-top: 10px; border-radius: 4px; overflow: hidden; }
+  .bar i { display: block; width: 68%; height: 100%; background: #1f5c43; }
+  .caption { position: absolute; left: 56px; bottom: 42px; font-size: 10px; color: #68766d; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <section class="left">
+      <div class="brand"><i></i>Morrow</div>
+      <h1>Money, made calm.</h1>
+      <p class="lede">A clear view of what comes in, what goes out and what it is all for. Built for the first five years of getting good with money.</p>
+      <a class="button" href="#">Join the waitlist</a>
+      <p class="note">Concept study / personal finance / iOS + Android</p>
+    </section>
+    <section class="right">
+      <div class="word">MORROW</div>
+      <div class="phone">
+        <div class="screen">
+          <div class="status"><span>9:41</span><span>●●●</span></div>
+          <div class="hello">Good morning,</div>
+          <div class="name">Maya Chen</div>
+          <div class="balance">Total balance</div>
+          <div class="amount">$8,420.50</div>
+          <div class="change">↑ $412 this month</div>
+          <div class="chart">
+            <svg viewBox="0 0 260 100" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0,74 C22,70 30,58 52,60 C74,62 82,38 104,42 C128,46 138,28 160,32 C184,36 198,18 222,22 C240,25 250,16 260,12" fill="none" stroke="#1f5c43" stroke-width="2.5"></path>
+              <path d="M0,74 C22,70 30,58 52,60 C74,62 82,38 104,42 C128,46 138,28 160,32 C184,36 198,18 222,22 C240,25 250,16 260,12 L260,100 L0,100 Z" fill="#1f5c43" opacity=".07"></path>
+            </svg>
+          </div>
+          <div class="row"><div><b>Rent</b><small>Housing / 1 Oct</small></div><span>−$1,650.00</span></div>
+          <div class="row"><div><b>Studio Miro</b><small>Salary / 30 Sep</small></div><span class="plus">+$4,200.00</span></div>
+          <div class="row"><div><b>Groceries</b><small>Everyday / 29 Sep</small></div><span>−$86.40</span></div>
+          <div class="goal"><small>Emergency fund</small><b>$6,800 of $10,000</b><div class="bar"><i></i></div></div>
+        </div>
+      </div>
+    </section>
+    <div class="caption">Morrow concept / account overview and goal tracking</div>
+  </div>
+</body>
+</html>

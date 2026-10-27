@@ -1,0 +1,14 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Local tooling and test artefacts
+.taste-skill/
+node_modules/
+*.log
