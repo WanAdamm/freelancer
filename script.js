@@ -48,6 +48,7 @@
   const dialogDesc = document.getElementById("study-desc");
   const dialogFacts = document.getElementById("study-facts");
   const dialogImage = document.getElementById("study-image");
+  const fullImageLink = document.getElementById("study-full-image");
   const closeButton = dialog ? dialog.querySelector(".dialog-close") : null;
   const studyOpeners = Array.from(document.querySelectorAll("[data-study]"));
   let lastOpener = null;
@@ -85,12 +86,14 @@
     setFacts(data.facts);
     dialogImage.src = data.img || "";
     dialogImage.alt = data.alt || "";
+    if (fullImageLink) fullImageLink.href = data.img || "";
 
     if (supportsModal) {
       dialog.showModal();
     } else {
       dialog.setAttribute("open", "");
     }
+    dialog.scrollTop = 0;
   }
 
   function closeStudy() {
